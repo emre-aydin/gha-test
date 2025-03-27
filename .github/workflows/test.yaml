@@ -1,0 +1,23 @@
+name: Test
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  test:
+    permissions:
+      contents: write
+    name: Test
+    runs-on: [ ubuntu-24.04 ]
+    timeout-minutes: 45
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Set env
+        run: ./script.sh
+      - name: Print env
+        run: | 
+          echo $A
+          echo $C
